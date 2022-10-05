@@ -207,7 +207,7 @@ function updateStatus($conn,$id,$status,$analytic_name) {
 
 function updateApprovalStatus($conn,$id,$approval_status,$client_name) {
     $response;
-    $sql = "UPDATE `adtagdata` SET `approval` = ?,`client_name` = ? WHERE `id` = ?;";
+    $sql = "UPDATE `adtagdata` SET `approval` = ?,`client_name` = ? , `client_time` = NOW() WHERE `id` = ?;";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param('ssi',$approval_status,$client_name,$id);
     if ($stmt->execute()) {
